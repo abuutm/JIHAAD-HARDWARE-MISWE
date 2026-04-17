@@ -1,0 +1,267 @@
+:root {
+  color-scheme: light;
+  --bg-screen: #e0e0e0;
+  --bg-panel: #f0f0f0;
+  --bg-panel-soft: #f5f5f5;
+  --bg-surface: #ffffff;
+  --bg-surface-strong: #fafafa;
+  --border: #d1d1d1;
+  --border-strong: #c0c0c0;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent: #6366f1;
+  --accent-soft: #818cf8;
+  --shadow-soft: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+  --shadow-deep: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
+  --shadow-inset: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-feature-settings: 'ss01' 1;
+  background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.neumorphic-card {
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  border: none;
+  box-shadow: var(--shadow-soft);
+  transform: translateZ(0);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neumorphic-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(0,0,0,0.05));
+  pointer-events: none;
+}
+
+.neumorphic-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-deep);
+}
+
+.neumorphic-sidebar {
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  border-right: 1px solid var(--border);
+  box-shadow: inset 5px 0 10px #bebebe, inset -5px 0 10px #ffffff;
+}
+
+.neumorphic-sidebar nav a,
+.neumorphic-sidebar button {
+  transition: transform 0.24s ease, background-color 0.24s ease, color 0.24s ease;
+}
+
+.neumorphic-sidebar nav a:hover,
+.neumorphic-sidebar button:hover {
+  transform: translateX(2px);
+}
+
+.neumorphic-card-pro {
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  border: none;
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+  transform: translateZ(0);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.neumorphic-card-pro:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-deep);
+}
+
+.section-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.neumorphic-section-panel {
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  border: none;
+  border-radius: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.neumorphic-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.9rem 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: linear-gradient(145deg, var(--accent), #06b6d4);
+  color: white;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2), -5px -5px 10px rgba(255,255,255,0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.neumorphic-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 7px 7px 15px rgba(0,0,0,0.3), -7px -7px 15px rgba(255,255,255,0.9);
+}
+
+.text-glow {
+  text-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+}
+
+@keyframes selectTextGlow {
+  0% {
+    letter-spacing: 0.03em;
+    text-shadow: 0 0 0 rgba(99, 102, 241, 0);
+  }
+  50% {
+    letter-spacing: 0.06em;
+    text-shadow: 0 0 12px rgba(99, 102, 241, 0.22);
+  }
+  100% {
+    letter-spacing: 0.045em;
+    text-shadow: 0 0 6px rgba(99, 102, 241, 0.12);
+  }
+}
+
+@keyframes selectBorderPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.12);
+    transform: translateY(-1px);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    transform: translateY(0);
+  }
+}
+
+.input-pro,
+select,
+textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  color: var(--text-primary);
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.22s ease, letter-spacing 0.22s ease, text-shadow 0.22s ease;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(99, 102, 241, 0.9) 50%),
+    linear-gradient(135deg, rgba(99, 102, 241, 0.9) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% - 2px),
+    calc(100% - 14px) calc(50% - 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+select:hover {
+  border-color: rgba(99, 102, 241, 0.45);
+  text-shadow: 0 0 8px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
+}
+
+select:focus,
+select:active {
+  animation: selectBorderPulse 0.55s ease, selectTextGlow 0.55s ease;
+}
+
+.input-pro:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.7);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.7) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+@media (max-width: 1200px) {
+  .pro-sidebar {
+    width: 70px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+  .app-shell {
+    min-height: auto;
+  }
+  .pro-sidebar {
+    position: fixed;
+    z-index: 60;
+  }
+}

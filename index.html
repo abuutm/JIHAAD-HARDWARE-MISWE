@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="sw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MotoStock Pro | Mfumo wa Stoo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Fira+Code:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --sb-track-color: transparent;
+        --sb-thumb-color: #cbd5e1;
+        --sb-size: 4px;
+        --neon-blue: #00d2ff;
+        --neon-cyan: #0ff;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8fafc;
+        font-size: 13px;
+        overflow: hidden;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .pro-sidebar {
+        background: #0f172a;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: var(--sb-size);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: var(--sb-track-color);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb-color);
+        border-radius: 10px;
+      }
+
+      /* --- Cinematic Screen Saver Suite --- */
+      
+      @keyframes float-center {
+        0%, 100% { transform: translateY(0) rotateX(10deg); }
+        50% { transform: translateY(-30px) rotateX(15deg); }
+      }
+
+      .hologram-stage {
+        perspective: 2500px;
+        transform-style: preserve-3d;
+      }
+
+      .hologram-main {
+        animation: float-center 8s ease-in-out infinite;
+        transform-style: preserve-3d;
+      }
+
+      /* Blueprint / Sketch Animation */
+      @keyframes blueprint-draw {
+        0% { stroke-dashoffset: 1200; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 0.3; }
+      }
+
+      .blueprint-line {
+        stroke-dasharray: 1200;
+        stroke-dashoffset: 1200;
+        animation: blueprint-draw 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      /* Splitting Mechanism */
+      .split-node {
+        transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        position: absolute;
+      }
+
+      /* Transformation Phases */
+      .phase-sketch { filter: url(#blueprint-sketch); opacity: 0.6; }
+      .phase-solid { opacity: 1; transform: scale(1.05); }
+      .phase-split .node-1 { transform: translate3d(-320px, -150px, 100px) rotateY(20deg); }
+      .phase-split .node-2 { transform: translate3d(320px, -150px, 100px) rotateY(-20deg); }
+      .phase-split .node-3 { transform: translate3d(-320px, 150px, 100px) rotateY(20deg); }
+      .phase-split .node-4 { transform: translate3d(320px, 150px, 100px) rotateY(-20deg); }
+
+      /* Cyber Scanline */
+      .scanline-effect {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.05) 50%, transparent);
+        background-size: 100% 8px;
+        animation: scanline-move 10s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes scanline-move {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+      }
+
+      .screensaver-overlay {
+        background: radial-gradient(circle at center, #020617 0%, #000 100%);
+      }
+
+      @media print {
+        body * { visibility: hidden; }
+        #printable-report, #printable-report * { visibility: visible; }
+        #printable-report { position: absolute; left: 0; top: 0; width: 100%; }
+      }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <svg style="display: none;">
+      <filter id="blueprint-sketch">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+      </filter>
+    </svg>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
